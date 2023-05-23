@@ -3,6 +3,7 @@ File: sql_attacks.py
 Authors: CSE453 Group 4
 Purpose: To demonstrate the ability to harden code against attacks.
 """
+import string
 
 # Write a function to accept two strings (username and a password) and return 
 # a single string (SQL)
@@ -78,13 +79,91 @@ def test_comment(comment_test):
 # This function accepts the input as a parameter (or two!) and returns the 
 # sanitized input.
 def weak_mitigation(test_cases):
-    pass
+    
+    # set default for weak mitigation sanatized test cases
+    new_test_cases = []
 
+    # loop through each test case in test cases list
+    for case in test_cases:
+
+        # set default for new test case
+        new_test_case = ""
+
+        # case test case to a list for sanitizing
+        new_case = list(case)
+
+        # loop through each element in current test case
+        for letter in case:
+
+            # if forbidden char is found, delete it from the new test case list
+            if letter == '\'' or letter == ";":
+                index = new_case.index(letter)
+                new_case.pop(index)
+
+        # build the cleansed test case and append it to the new test cases list for return
+        for element in new_case:        
+            new_test_case += element
+        new_test_cases.append(new_test_case)
+     
+    
+    
+    # print output for now
+    for number in range(len(new_test_cases)):
+        print(f"Original: {test_cases[number]}")
+        print(f"Weak mitigation: {new_test_cases[number]}")
+
+    
+    
+    # return weak mitigation sanitized test cases
+    return new_test_cases
+
+        
 # Create a function to provide a strong mitigation against all command 
 # injection attacks. This function accepts the input as a parameter (or two!) 
 # and returns the sanitized input.
 def strong_mitigation(test_cases):
-    pass
+    
+    # set defaults for new test case string and new test cases list
+    new_test_case = ""
+    new_test_cases = []
+
+    # loop through test cases parameter to validate tests
+    for test_case in test_cases:
+
+        # split test case by spaces to check for multiple entries
+        test_case_list = test_case.split()
+
+        # if the test case has more than one element, use strong mitigation
+        # by not allowing the input to reach the sql query command line through
+        # removing all inputs
+        if len(test_case_list) > 1:
+            new_test_case = " "
+        
+        # if forbidden characters are in the test case, use strong mitigation by
+        # not allowing any input to the sql query command line through blanks
+        elif "\'" in test_case or ";" in test_case:
+            new_test_case = " "
+        
+        # otherwise, pass the valid test case through the strong mitigation function
+        else:
+            new_test_case = test_case
+
+        # apppend the sanitized test case to the new test cases list    
+        new_test_cases.append(new_test_case)
+
+
+    
+    # print output for now
+    for number in range(len(new_test_cases)):
+        print(f"Original: {test_cases[number]}")
+        print(f"Strong mitigation: {new_test_cases[number]}")
+    
+    
+
+    # return the strong sanitized test cases     
+    return new_test_cases
+    
+
 
 # main function
 def main():
@@ -100,6 +179,18 @@ def main():
     # call test_comment(comment_tests())
 
     # call test_tautology(weak_mitigation(tautology_tests()))
+    sample_test_cases = [
+        "nothing' ; INSERT INTO passwordList (name, passwd) VALUES 'Bob', '1234",
+        "Root' ; --",
+        "nothing' OR 'x' = 'x",
+        "nothing' UNION SELECT authenticate FROM parameterList",
+        "login"
+    ]
+    print("\n --------Weak-------- \n")
+    weak_mitigation(sample_test_cases)
+    print("\n -------Strong------- \n")
+    strong_mitigation(sample_test_cases)
+    print()
 
     # call test_union(weak_mitigation(union_tests()))
 
