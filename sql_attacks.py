@@ -105,15 +105,6 @@ def weak_mitigation(test_cases):
             new_test_case += element
         new_test_cases.append(new_test_case)
      
-    
-    
-    # print output for now
-    for number in range(len(new_test_cases)):
-        print(f"Original: {test_cases[number]}")
-        print(f"Weak mitigation: {new_test_cases[number]}")
-
-    
-    
     # return weak mitigation sanitized test cases
     return new_test_cases
 
@@ -127,10 +118,10 @@ def strong_mitigation(test_cases):
     new_test_case = ""
     new_test_cases = []
 
-    # loop through test cases parameter to validate tests
+    # loop through test cases parameter to validate test cases
     for test_case in test_cases:
 
-        # split test case by spaces to check for multiple entries
+        # split each test case by spaces to check for multiple entries
         test_case_list = test_case.split()
 
         # if the test case has more than one element, use strong mitigation
@@ -151,15 +142,6 @@ def strong_mitigation(test_cases):
         # apppend the sanitized test case to the new test cases list    
         new_test_cases.append(new_test_case)
 
-
-    
-    # print output for now
-    for number in range(len(new_test_cases)):
-        print(f"Original: {test_cases[number]}")
-        print(f"Strong mitigation: {new_test_cases[number]}")
-    
-    
-
     # return the strong sanitized test cases     
     return new_test_cases
     
@@ -179,18 +161,6 @@ def main():
     # call test_comment(comment_tests())
 
     # call test_tautology(weak_mitigation(tautology_tests()))
-    sample_test_cases = [
-        "nothing' ; INSERT INTO passwordList (name, passwd) VALUES 'Bob', '1234",
-        "Root' ; --",
-        "nothing' OR 'x' = 'x",
-        "nothing' UNION SELECT authenticate FROM parameterList",
-        "login"
-    ]
-    print("\n --------Weak-------- \n")
-    weak_mitigation(sample_test_cases)
-    print("\n -------Strong------- \n")
-    strong_mitigation(sample_test_cases)
-    print()
 
     # call test_union(weak_mitigation(union_tests()))
 
