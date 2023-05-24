@@ -19,6 +19,8 @@ def query(username, password):
 # valid input where the username and the password consist of letters, numbers, 
 # and underscores. This function will return member valid test cases.
 def valid_tests():
+    
+    # left string in each list is the username, right is password
     valid_test_cases = [
         ["FirstUserNamed", "On3S3cr3tP4sswd"],
         ["", ""],
@@ -42,6 +44,8 @@ def test_valid(valid_tests):
 # that demonstrate a tautology attack. This function will return member valid 
 # test cases.
 def tautology_tests():
+    
+    # left string in each list is the username, right is password
     tautology_test_cases = [
         ["FirstUserListed", "nope' OR 'z' = 'z'"],
         ["", ""],
@@ -65,6 +69,8 @@ def test_tautology(tautology_tests):
 # that demonstrate a union query attack. This function will return member union 
 # attack test cases.
 def union_tests():
+    
+    # left string in each list is the username, right is password
     union_test_cases = [
         ["FirstUserListed", "nope' UNION SELECT validate FROM userPasswords"],
         ["", ""],
@@ -88,6 +94,8 @@ def test_union(union_tests):
 # that demonstrate an additional statement attack. This function will return 
 # member additional statement attack test cases.
 def additional_statement_tests():
+    
+    # left string in each list is the username, right is password
     additional_statement_test_cases = [
         ["FirstUserListed", "none' ; ALTER TABLE passwordList DROP COLUMN name"],
         ["", ""],
@@ -111,6 +119,8 @@ def test_additional_statement(additional_statement_tests):
 # that demonstrate a comment attack. This function will return member comment
 # attack test cases.
 def comment_tests():
+    
+    # left string in each list is the username, right is password
     comment_test_cases = [
         ["Admin'; -- and passwd='DoesNotMatter';", "On3S3cr3tP4sswd"],
         ["", ""],
@@ -168,7 +178,7 @@ def weak_mitigation(test_cases):
     return sanitized_tests
 
 
-# function to strip blacklisted characters from inputs
+# function to strip blacklisted characters from inputs and not duplicate code in weak_mitigation function
 def weakly_sanitized(corrupt_data):
     
     # set defaults for new sanitized string and corrected list
@@ -226,7 +236,8 @@ def strong_mitigation(test_cases):
     # return the strong sanitized test cases     
     return 
 
-    
+
+# function to keep from duplicating code in strong_mitigation function    
 def strongly_sanitized(test_string):
 
     # split test string into list elements by spaces
