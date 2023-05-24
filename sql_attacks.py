@@ -97,7 +97,7 @@ def additional_statement_tests():
     
     # left string in each list is the username, right is password
     additional_statement_test_cases = [
-        ["On3_User", "none' ; ALTER TABLE passwordList DROP COLUMN name"],
+        ["One_4_User", "none' ; ALTER TABLE passwordList DROP COLUMN name"],
         ["", ""],
         ["", ""],
         ["", ""],
