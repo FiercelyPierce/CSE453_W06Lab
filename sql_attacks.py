@@ -22,7 +22,7 @@ def valid_tests():
     
     # left string in each list is the username, right is password
     valid_test_cases = [
-        ["FirstUserNamed", "On3S3cr3tP4sswd"],
+        ["First_User_2day", "On3_S3cr3t_P4sswd"],
         ["", ""],
         ["", ""],
         ["", ""],
@@ -47,7 +47,7 @@ def tautology_tests():
     
     # left string in each list is the username, right is password
     tautology_test_cases = [
-        ["FirstUserListed", "nope' OR 'z' = 'z'"],
+        ["User_Listed2", "nope' OR 'z' = 'z'"],
         ["", ""],
         ["", ""],
         ["", ""],
@@ -72,7 +72,7 @@ def union_tests():
     
     # left string in each list is the username, right is password
     union_test_cases = [
-        ["FirstUserListed", "nope' UNION SELECT validate FROM userPasswords"],
+        ["User_3_Listed", "nope' UNION SELECT validate FROM userPasswords"],
         ["", ""],
         ["", ""],
         ["", ""],
@@ -97,7 +97,7 @@ def additional_statement_tests():
     
     # left string in each list is the username, right is password
     additional_statement_test_cases = [
-        ["FirstUserListed", "none' ; ALTER TABLE passwordList DROP COLUMN name"],
+        ["On3_User", "none' ; ALTER TABLE passwordList DROP COLUMN name"],
         ["", ""],
         ["", ""],
         ["", ""],
@@ -122,7 +122,7 @@ def comment_tests():
     
     # left string in each list is the username, right is password
     comment_test_cases = [
-        ["Admin'; -- and passwd='DoesNotMatter';", "On3S3cr3tP4sswd"],
+        ["Admin'; -- and passwd='DoesNotMatter';", "On3_53cr3t_P455w0rd"],
         ["", ""],
         ["", ""],
         ["", ""],
