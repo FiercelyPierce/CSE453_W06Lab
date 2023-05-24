@@ -7,7 +7,12 @@ Purpose: To demonstrate the ability to harden code against SQL attacks.
 # Write a function to accept two strings (username and a password) and return 
 # a single string (SQL)
 def query(username, password):
-    pass
+    return f"""
+        SELECT authenticate 
+        FROM passwordlist 
+        WHERE name='{username}' 
+        and passwd='{password}';
+    """
 
 
 # Generate a set of cases (one for each member of your team) that represent 
