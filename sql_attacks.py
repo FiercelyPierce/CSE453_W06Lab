@@ -36,9 +36,22 @@ def valid_tests():
 # and displays the resulting query
 def test_valid(valid_tests):
 
-    # loop through valid test cases, print output
-    pass
+    # display type tests being run
+    print("\nValid input tests")
 
+    # loop through valid test cases, print output
+    for test in valid_tests:
+
+        # breat test list down for clarity
+        username = test[0]
+        password = test[1]
+
+        # print arguments passed to query
+        print(f"Query arguments - Username: {username}, Password: {password}")
+        
+        # print query response
+        print(query(username, password))
+    
 
 # Generate test cases (again, each team member should generate one test case) 
 # that demonstrate a tautology attack. This function will return member valid 
@@ -276,22 +289,22 @@ def strongly_sanitized(test_string):
 def main():
     
     # run valid test cases
-    # test_valid(valid_test())
+    test_valid(valid_tests())
 
     # run tautology test cases
-    # test_tautology(tautology_tests())
+    test_tautology(tautology_tests())
 
     # run union test cases
-    # test_union(union_tests())
+    test_union(union_tests())
 
     # run additional statement test cases
-    # test_additional_statement(additional_statement_tests())
+    test_additional_statement(additional_statement_tests())
 
     # run comment test cases
-    # test_comment(comment_tests())
+    test_comment(comment_tests())
 
     # run tautology tests using weak mediation
-    # test_tautology(weak_mitigation(tautology_tests()))
+    test_tautology(weak_mitigation(tautology_tests()))
 
     """
     WM test code 
@@ -300,7 +313,7 @@ def main():
     """
 
     # run union tests using weak mediation
-    # test_union(weak_mitigation(union_tests()))
+    test_union(weak_mitigation(union_tests()))
 
     """
     WM test code
@@ -309,7 +322,7 @@ def main():
     """
 
     # run additional statement tests using weak mediation
-    # test_additional_statement(weak_mitigation(additional_statement_tests()))
+    test_additional_statement(weak_mitigation(additional_statement_tests()))
 
     """
     WM test code
@@ -318,7 +331,7 @@ def main():
     """
 
     # run comment tests using weak mediation
-    # test_comment(weak_mitigation(comment_tests()))  
+    test_comment(weak_mitigation(comment_tests()))  
 
     """
     WM test code
@@ -328,7 +341,7 @@ def main():
     """
 
     # run tautology tests using strong mediation
-    # test_tautology(strong_mitigation(tautology_tests()))
+    test_tautology(strong_mitigation(tautology_tests()))
 
     """
     SM test code
@@ -337,7 +350,7 @@ def main():
     """
 
     # run union tests using strong mediation
-    # test_union(strong_mitigation(union_tests()))
+    test_union(strong_mitigation(union_tests()))
 
     """
     SM test code
@@ -346,7 +359,7 @@ def main():
     """
 
     # run additional statement tests using strong mediation
-    # test_additional_statement(strong_mitigation(additional_statement_tests()))
+    test_additional_statement(strong_mitigation(additional_statement_tests()))
 
     """
     SM test code
@@ -355,7 +368,7 @@ def main():
     """
 
     # run comment tests using strong mediation
-    # test_comment(strong_mitigation(comment_tests()))
+    test_comment(strong_mitigation(comment_tests()))
 
     """
     SM test code
@@ -363,7 +376,6 @@ def main():
     strong_mitigation(comment_tests())
     print() 
     """ 
-    
  
 
 # if run directly, run main function
