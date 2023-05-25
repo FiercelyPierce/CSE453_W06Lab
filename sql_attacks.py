@@ -7,6 +7,13 @@ Purpose: To demonstrate the ability to harden code against SQL attacks.
 # Write a function to accept two strings (username and a password) and return 
 # a single string (SQL)
 def query(username, password):
+    """
+    This function accepts two parameters, a username and a password. It takes these,
+    forms an SQL query with it, and returns it as a string.
+    Parameters: username - string containing a username
+                password - string containing a password
+    Return:     SQL response - string containing the SQL query
+    """
     return f"""
         SELECT authenticate 
         FROM passwordlist 
@@ -19,7 +26,12 @@ def query(username, password):
 # valid input where the username and the password consist of letters, numbers, 
 # and underscores. This function will return member valid test cases.
 def valid_tests():
-    
+    """
+    This function accepts no parameters, but returns a list of valid usernames
+    and passwords.
+    Parameters: none
+    Return:     valid_test_cases - list of valid usernames and passwords
+    """    
     # left string in each list is the username, right is password
     valid_test_cases = [
         ["First_User_2day", "On3_S3cr3t_P4sswd"],
@@ -34,10 +46,18 @@ def valid_tests():
 
 # Create a function that feeds these test cases through the query function 
 # and displays the resulting query
-def test_valid(valid_tests, title):
-
+def test_valid(valid_tests):
+    """
+    This function accepts one parameter, a list containing valid usernames
+    and passwords. It then loops through the test cases, calls the query
+    function with each test case set of username and password, and displays 
+    the query response.
+    Parameters: valid_tests - list containing test cases of valid usernames
+                              and passwords
+    Returns:    nothing
+    """
     # display type tests being run
-    print(f"\n{title}")
+    print(f"\n\033[1;31m{'Running valid test cases'}\033[00m")
 
     # loop through valid test cases, print output
     for test in valid_tests:
@@ -57,7 +77,12 @@ def test_valid(valid_tests, title):
 # that demonstrate a tautology attack. This function will return member valid 
 # test cases.
 def tautology_tests():
-    
+    """
+    This function accepts no parameters, but returns a list of valid usernames
+    and malformed passwords for a tautology attack.
+    Parameters: none
+    Return:     tautology_test_cases - list of usernames and tautology passwords
+    """
     # left string in each list is the username, right is password
     tautology_test_cases = [
         ["User_Listed2", "nope' OR 'z' = 'z'"],
@@ -73,6 +98,17 @@ def tautology_tests():
 # Create a function that feeds these tautology test cases through the query 
 # function and displays the output.
 def test_tautology(tautology_tests, title):
+    """
+    This function accepts two parameters, a list containing test cases potentially
+    designed for a tautology attack using malformed usernames and passwords, and 
+    a title for the tests being run. It will display the test type title, loop 
+    through the set of test cases, call the query function for each set of username
+    password, and display the query response.
+    Parameters: tautology_tests - list of potentially malformed usernames and passwords
+    Return:     nothing 
+    """
+    # display type tests being run
+    """print(f"\n\033[1;31m{title}\033[00m")"""
 
     # loop through tautology test cases, run query, print output
     pass
@@ -82,10 +118,15 @@ def test_tautology(tautology_tests, title):
 # that demonstrate a union query attack. This function will return member union 
 # attack test cases.
 def union_tests():
-    
+    """
+    This function accepts no parameters, but returns a list of valid usernames
+    and malformed passwords for a union attack.
+    Parameters: none
+    Return:     union_test_cases - list of usernames and union attack passwords
+    """
     # left string in each list is the username, right is password
     union_test_cases = [
-        ["User_3_Listed", "nope' UNION SELECT validate FROM userPasswords"],
+        ["User_3_Listed", "nope' UNION SELECT authenticate FROM passwordlist"],
         ["", ""],
         ["", ""],
         ["", ""],
@@ -98,6 +139,17 @@ def union_tests():
 # Create a function that feeds these union query test cases through the query 
 # function and displays the output 
 def test_union(union_tests, title):
+    """
+    This function accepts two parameters, a list containing test cases potentially
+    designed for a union attack using malformed usernames and passwords, and 
+    a title for the tests being run. It will display the test type title, loop 
+    through the set of test cases, call the query function for each set of username
+    password, and display the query response.
+    Parameters: union_tests - list of potentially malformed usernames and passwords
+    Return:     nothing 
+    """
+    # display type tests being run
+    """print(f"\n\033[1;31m{title}\033[00m")"""
 
     # loop through union test cases, run_query, print output
     pass
@@ -107,10 +159,16 @@ def test_union(union_tests, title):
 # that demonstrate an additional statement attack. This function will return 
 # member additional statement attack test cases.
 def additional_statement_tests():
-    
+    """
+    This function accepts no parameters, but returns a list of valid usernames
+    and malformed passwords for an additional statement attack.
+    Parameters: none
+    Return:     additional_statement_test_cases - list of usernames and additional 
+                                                  statement attack passwords
+    """
     # left string in each list is the username, right is password
     additional_statement_test_cases = [
-        ["One_4_User", "none' ; ALTER TABLE passwordList DROP COLUMN name"],
+        ["One_4_User", "none' ; ALTER TABLE passwordlist DROP COLUMN name"],
         ["", ""],
         ["", ""],
         ["", ""],
@@ -123,7 +181,19 @@ def additional_statement_tests():
 # Create a function that feeds these additional statement query test cases 
 # through the additional statement function and displays the output 
 def test_additional_statement(additional_statement_tests, title):
-
+    """
+    This function accepts two parameters, a list containing test cases potentially
+    designed for an additional statement attack using malformed usernames and passwords, 
+    and a title for the tests being run. It will display the test type title, loop 
+    through the set of test cases, call the query function for each set of username
+    password, and display the query response.
+    Parameters: additional_statement_tests - list of potentially malformed usernames 
+                                             and passwords
+    Return:     nothing 
+    """
+    # display type tests being run
+    """print(f"\n\033[1;31m{title}\033[00m")"""
+    
     # loop through additional statement test cases, run query, print output
     pass
 
@@ -132,7 +202,12 @@ def test_additional_statement(additional_statement_tests, title):
 # that demonstrate a comment attack. This function will return member comment
 # attack test cases.
 def comment_tests():
-    
+    """
+    This function accepts no parameters, but returns a list of corrupt usernames
+    and valid passwords for a comment attack.
+    Parameters: none
+    Return:     comment_test_cases - list of comment usernames and valid passwords
+    """
     # left string in each list is the username, right is password
     comment_test_cases = [
         ["Admin'; -- and passwd='DoesNotMatter';", "On3_53cr3t_P455w0rd"],
@@ -148,7 +223,18 @@ def comment_tests():
 # Create a function that feeds these comment test cases through the query 
 # function and displays the output 
 def test_comment(comment_tests, title):
-
+    """
+    This function accepts two parameters, a list containing test cases potentially
+    designed for a comment attack using malformed usernames and passwords, and 
+    a title for the tests being run. It will display the test type title, loop 
+    through the set of test cases, call the query function for each set of username
+    password, and display the query response.
+    Parameters: comment_tests - list of potentially malformed usernames and passwords
+    Return:     nothing 
+    """
+    # display type tests being run
+    """print(f"\n\033[1;31m{title}\033[00m")"""
+    
     # loop through comment test cases, print output
     pass
 
@@ -157,7 +243,13 @@ def test_comment(comment_tests, title):
 # This function accepts the input as a parameter (or two!) and returns the 
 # sanitized input.
 def weak_mitigation(test_cases):
-
+    """
+    This function accepts a set of test cases (list of usernames and passwords)
+    as a parameter which may be malformed. It then uses weak mitigation strategy 
+    to sanitize them. Finally, it returns the sanitized list of test cases.
+    Parameters: test_cases - list of possibly malformed usernames and passwords
+    Return:     sanitized_tests - list of weakly sanitized usernames and passwords
+    """
     # create list to hold the lists of sanitized usernames and passwords
     sanitized_tests = []    
     
@@ -183,9 +275,17 @@ def weak_mitigation(test_cases):
     return sanitized_tests
 
 
-# function to strip blacklisted characters from inputs and not duplicate code in weak_mitigation function
+# function to strip blacklisted characters from inputs and not duplicate code in 
+# weak_mitigation function
 def weakly_sanitized(corrupt_data):
-    
+    """
+    This is a helper function for the weak_mitigation function. It serves to prevent 
+    duplication of code and provide functionality for stripping out forbidden 
+    characters from the corrupt_data string parameter. It returns the sanitized
+    string.
+    Parameters: corrupt_data - string containing potentially corrupting characters
+    Return:     sanitized_string - string stripped of corrupting characters
+    """    
     # set defaults for new sanitized string and corrected list
     sanitized_string = ""
     corrected_list = list(corrupt_data)
@@ -210,8 +310,14 @@ def weakly_sanitized(corrupt_data):
 # injection attacks. This function accepts the input as a parameter (or two!) 
 # and returns the sanitized input.
 def strong_mitigation(test_cases):
-    
-   # create list to hold the lists of sanitized usernames and passwords
+    """
+    This function accepts a list of potentially malformed usernames and passwords, uses
+    strong mitigation strategy to prevent access to the interpreter of the corrupt data,
+    and returns a list of sanitized usernames and passwords.
+    Parameters: test_cases - list of potentially malformed usernames and passwords
+    Return:     sanitized_tests - list of sanitized usernames and passwords
+    """
+    # create list to hold the lists of sanitized usernames and passwords
     sanitized_tests = []    
     
     # loop through each test case in test cases list
@@ -236,7 +342,14 @@ def strong_mitigation(test_cases):
 
 # function to keep from duplicating code in strong_mitigation function    
 def strongly_sanitized(test_string):
-
+    """
+    This is a helper function for the strong_mitigation function. It serves to prevent 
+    duplication of code and provide functionality for providing valid input to the
+    interpreter by sanitizing the test_string string parameter using strong mitigation
+    strategy. It then returns the sanitized string.
+    Parameters: test_string - string containing potentially malicious username or password
+    Return:     sanitized_string - string cleansed and made a valid input for interpreter
+    """
     # split test string into list elements by spaces
     test_list = test_string.split()
 
@@ -271,9 +384,17 @@ def strongly_sanitized(test_string):
 
 # main function
 def main():
-    
+    """
+    This is the main function which drives the program. All functions as
+    defined by the assignment are first called directly with the associated
+    test cases, next called using the weak mitigation function, and finally
+    called using the strong mitigation function. It accepts no parameters and
+    returns nothing.
+    Parameters: none
+    Return:     nothing
+    """
     # run valid test cases
-    test_valid(valid_tests(), "Running valid test cases")
+    test_valid(valid_tests())
 
     # run tautology test cases
     test_tautology(tautology_tests(), "Running tautology test cases")
