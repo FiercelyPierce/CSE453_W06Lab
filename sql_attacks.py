@@ -34,10 +34,10 @@ def valid_tests():
 
 # Create a function that feeds these test cases through the query function 
 # and displays the resulting query
-def test_valid(valid_tests):
+def test_valid(valid_tests, title):
 
     # display type tests being run
-    print("\nValid input tests")
+    print(f"\n{title}")
 
     # loop through valid test cases, print output
     for test in valid_tests:
@@ -50,7 +50,7 @@ def test_valid(valid_tests):
         print(f"Query arguments - Username: {username}, Password: {password}")
         
         # print query response
-        print(query(username, password))
+        print(f"Query response: {query(username, password)}")
     
 
 # Generate test cases (again, each team member should generate one test case) 
@@ -72,7 +72,7 @@ def tautology_tests():
 
 # Create a function that feeds these tautology test cases through the query 
 # function and displays the output.
-def test_tautology(tautology_tests):
+def test_tautology(tautology_tests, title):
 
     # loop through tautology test cases, run query, print output
     pass
@@ -97,7 +97,7 @@ def union_tests():
 
 # Create a function that feeds these union query test cases through the query 
 # function and displays the output 
-def test_union(union_tests):
+def test_union(union_tests, title):
 
     # loop through union test cases, run_query, print output
     pass
@@ -122,7 +122,7 @@ def additional_statement_tests():
 
 # Create a function that feeds these additional statement query test cases 
 # through the additional statement function and displays the output 
-def test_additional_statement(additional_statement_tests):
+def test_additional_statement(additional_statement_tests, title):
 
     # loop through additional statement test cases, run query, print output
     pass
@@ -147,7 +147,7 @@ def comment_tests():
 
 # Create a function that feeds these comment test cases through the query 
 # function and displays the output 
-def test_comment(comment_tests):
+def test_comment(comment_tests, title):
 
     # loop through comment test cases, print output
     pass
@@ -179,14 +179,6 @@ def weak_mitigation(test_cases):
         # build new sanitized tests list
         sanitized_tests.append(sanitized_list)
      
-    """
-    Test code
-    # print output for now
-    for number in range(len(sanitized_tests)):
-        print(f"Original: Username - {test_cases[number][0]}, Password - {test_cases[number][1]}")
-        print(f"Weak mitigation: Username - {sanitized_tests[number][0]}, Password - {sanitized_tests[number][1]}")
-    """
-
     # return weak mitigation sanitized test cases
     return sanitized_tests
 
@@ -238,14 +230,6 @@ def strong_mitigation(test_cases):
         # build new sanitized tests list
         sanitized_tests.append(sanitized_list)
 
-    """
-    Test code
-    # print output for now
-    for number in range(len(sanitized_tests)):
-        print(f"Original: Username - {test_cases[number][0]}, Password - {test_cases[number][1]}")
-        print(f"Strong mitigation: Username - {sanitized_tests[number][0]}, Password - {sanitized_tests[number][1]}")
-    """
-    
     # return the strong sanitized test cases     
     return 
 
@@ -289,93 +273,52 @@ def strongly_sanitized(test_string):
 def main():
     
     # run valid test cases
-    test_valid(valid_tests())
+    test_valid(valid_tests(), "Running valid test cases")
 
     # run tautology test cases
-    test_tautology(tautology_tests())
+    test_tautology(tautology_tests(), "Running tautology test cases")
 
     # run union test cases
-    test_union(union_tests())
+    test_union(union_tests(), "Running union test cases")
 
     # run additional statement test cases
-    test_additional_statement(additional_statement_tests())
+    test_additional_statement(additional_statement_tests(), \
+                              "Running additional statement test cases")
 
     # run comment test cases
-    test_comment(comment_tests())
+    test_comment(comment_tests(), "Running comment test cases")
 
     # run tautology tests using weak mediation
-    test_tautology(weak_mitigation(tautology_tests()))
-
-    """
-    WM test code 
-    print("\nTautology")
-    weak_mitigation(tautology_tests()) # testing weak mitigation with tautology test lists
-    """
+    test_tautology(weak_mitigation(tautology_tests()), \
+                   "Running tautology test cases with weak mitigation")
 
     # run union tests using weak mediation
-    test_union(weak_mitigation(union_tests()))
-
-    """
-    WM test code
-    print("\nUnion")
-    weak_mitigation(union_tests()) # testing weak mitigation with union tests
-    """
+    test_union(weak_mitigation(union_tests()), \
+                   "Running union test cases with weak mitigation")
 
     # run additional statement tests using weak mediation
-    test_additional_statement(weak_mitigation(additional_statement_tests()))
-
-    """
-    WM test code
-    print("\nAdditional Statements")
-    weak_mitigation(additional_statement_tests()) # testing weak mitigation with additional statement tests
-    """
+    test_additional_statement(weak_mitigation(additional_statement_tests()), \
+                   "Running additional statement test cases with weak mitigation")
 
     # run comment tests using weak mediation
-    test_comment(weak_mitigation(comment_tests()))  
-
-    """
-    WM test code
-    print("\nComment")
-    weak_mitigation(comment_tests()) # testing weak mitigation with comment tests
-    print()
-    """
+    test_comment(weak_mitigation(comment_tests()), \
+                   "Running comment test cases with weak mitigation")  
 
     # run tautology tests using strong mediation
-    test_tautology(strong_mitigation(tautology_tests()))
-
-    """
-    SM test code
-    print("\nTautology")
-    strong_mitigation(tautology_tests())
-    """
+    test_tautology(strong_mitigation(tautology_tests()), \
+                   "Running tautology test cases with strong mitigation")
 
     # run union tests using strong mediation
-    test_union(strong_mitigation(union_tests()))
-
-    """
-    SM test code
-    print("\nUnion")
-    strong_mitigation(union_tests())
-    """
+    test_union(strong_mitigation(union_tests()), \
+                   "Running union test cases with strong mitigation")
 
     # run additional statement tests using strong mediation
-    test_additional_statement(strong_mitigation(additional_statement_tests()))
-
-    """
-    SM test code
-    print("\nAdditional Statement")
-    strong_mitigation(additional_statement_tests())
-    """
+    test_additional_statement(strong_mitigation(additional_statement_tests()), \
+                   "Running additional statement test cases with strong mitigation")
 
     # run comment tests using strong mediation
-    test_comment(strong_mitigation(comment_tests()))
-
-    """
-    SM test code
-    print("\nComment")
-    strong_mitigation(comment_tests())
-    print() 
-    """ 
+    test_comment(strong_mitigation(comment_tests()), \
+                   "Running comment test cases with strong mitigation")
  
 
 # if run directly, run main function
