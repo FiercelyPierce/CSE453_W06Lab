@@ -70,7 +70,7 @@ def test_valid(valid_tests):
         print(f"Query arguments - Username: {username}, Password: {password}")
         
         # print query response
-        print(f"Query response: {query(username, password)}")
+        print(f"SQL query: {query(username, password)}")
     
 
 # Generate test cases (again, each team member should generate one test case) 
