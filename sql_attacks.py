@@ -36,7 +36,7 @@ def valid_tests():
     valid_test_cases = [
         ["First_User_2day", "On3_S3cr3t_P4sswd"],
         ["2nd_User_2morow", "Th!sIs@S3creT"],
-        ["", ""],
+        ["Third_User,2uesday", "My_sup3r_SeCr3t_P455W0rd"],
         ["", ""],
         ["", ""],
         ["", ""]
@@ -87,7 +87,7 @@ def tautology_tests():
     tautology_test_cases = [
         ["User_Listed2", "nope' OR 'z' = 'z'"],
         ["Number1User!", "Nada' OR 'a' = 'a'"],
-        ["", ""],
+        ["Usuh_numba3", "Zilch OR 'b' = 'b'"],
         ["", ""],
         ["", ""],
         ["", ""]
@@ -138,7 +138,7 @@ def union_tests():
     union_test_cases = [
         ["User_3_Listed", "nope' UNION SELECT authenticate FROM passwordlist"],
         ["ImAnother_user", "nothin' UNION SELECT authenticate FROM passwordlist"],
-        ["", ""],
+        ["Whitelisted_user" "negative' UNION SELECT authenticate FROM passwordlist "],
         ["", ""],
         ["", ""],
         ["", ""]
@@ -180,7 +180,7 @@ def additional_statement_tests():
     additional_statement_test_cases = [
         ["One_4_User", "none' ; ALTER TABLE passwordlist DROP COLUMN name"],
         ["additional_user", "nope' ; ALTER TABLE passwordlist DROP COLUMN passwordlist"],
-        ["", ""],
+        ["This_user_awesome", "zero' ; ALTER TABLE passwordlist DROP COLUMN keyword"],
         ["", ""],
         ["", ""],
         ["", ""]
@@ -222,7 +222,7 @@ def comment_tests():
     comment_test_cases = [
         ["Admin'; -- and passwd='DoesNotMatter';", "On3_53cr3t_P455w0rd"],
         ["Admin'; -- and passwd='NotRequired';", "V3rySecr3tStuff!"],
-        ["", ""],
+        ["Admin'; -- and passwd='Undisclosed';", "My_sup3r_SeCr3t_K3yW0rD"],
         ["", ""],
         ["", ""],
         ["", ""]
