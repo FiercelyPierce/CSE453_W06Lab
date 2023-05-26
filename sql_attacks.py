@@ -38,8 +38,8 @@ def valid_tests():
         ["2nd_User_2morow", "Th!sIs@S3creT"],
         ["Third_User_2uesday", "My_sup3r_SeCr3t_P455W0rd"],
         ["Forth_User_26th", "Password"],
-        ["", ""],
-        ["", ""]
+        ["5th_User", "This_is_a_password"],
+        ["Sixth_User", "MY_P4ssw0rd_iS_On3"],
     ]
     return valid_test_cases
 
@@ -88,9 +88,9 @@ def tautology_tests():
         ["User_Listed2", "nope' OR 'z' = 'z'"],
         ["Number1User!", "Nada' OR 'a' = 'a'"],
         ["Usuh_numba3", "Zilch OR 'b' = 'b'"],
-        ["LuckyFour", "wrong OR 1 == 1"],
-        ["", ""],
-        ["", ""]
+        ["LuckyFour", "wrong OR '1' == '1'"],
+        ["The_fifth", "invalid OR '10' == '10'"],
+        ["Im_sixth", "erroneous OR '6' == '6'"],
     ]
     return tautology_test_cases
 
@@ -140,8 +140,8 @@ def union_tests():
         ["ImAnother_user", "nothin' UNION SELECT authenticate FROM passwordlist"],
         ["Whitelisted_user", "negative' UNION SELECT authenticate FROM passwordlist "],
         ["Craig", "guess UNION SELECT authenticate FROM passwordlist"],
-        ["", ""],
-        ["", ""]
+        ["Jimbo", "help UNION SELECT authenticate FROM passwordlist"],
+        ["Slick_user", "pop' UNION SELECT authenticate FROM passwordlist"],
     ] 
     return union_test_cases
 
@@ -190,8 +190,8 @@ def additional_statement_tests():
         ["additional_user", "nope' ; ALTER TABLE passwordlist DROP COLUMN passwordlist"],
         ["This_user_awesome", "zero' ; ALTER TABLE passwordlist DROP COLUMN keyword"],
         ["DemonKing", "Ganondorf ; INSERT INTO passwordlist (name, passwd) VALUES 'Moblin', 'Bokoblin'"],
-        ["", ""],
-        ["", ""]
+        ["Sledge", "Operator ; ALTER TABLE passwordlist ADD COLUMN hammer"],
+        ["Octane", "Car ; ALTER TABLE passwordlist ADD COLUMN red"],
     ] 
     return additional_statement_test_cases
 
@@ -240,8 +240,8 @@ def comment_tests():
         ["Admin'; -- and passwd='NotRequired';", "V3rySecr3tStuff!"],
         ["Admin'; -- and passwd='Undisclosed';", "My_sup3r_SeCr3t_K3yW0rD"],
         ["Admin; -- ", "GetHacked"],
-        ["", ""],
-        ["", ""]
+        ["Admin; -- and passwd='Itdoesmatter';", "TiM_T4m_1o0"],
+        ["Admin; -- and passwd='Comment';", "I_h4ve_4_Pa55W0rd"],
     ] 
     return comment_test_cases 
 
@@ -444,7 +444,7 @@ def execute_tautology_tests():
                    "Running tautology test cases with strong mitigation")
     
 
-# run untion attack tests
+# run union attack tests
 def execute_union_tests():
     """
     This function accepts no parameters and returns nothing. It will execute
