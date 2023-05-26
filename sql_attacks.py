@@ -35,7 +35,7 @@ def valid_tests():
     # left string in each list is the username, right is password
     valid_test_cases = [
         ["First_User_2day", "On3_S3cr3t_P4sswd"],
-        ["", ""],
+        ["2nd_User_2morow", "Th!sIs@S3creT"],
         ["", ""],
         ["", ""],
         ["", ""],
@@ -62,7 +62,7 @@ def test_valid(valid_tests):
     # loop through valid test cases, print output
     for test in valid_tests:
 
-        # breat test list down for clarity
+        # break test list down for clarity
         username = test[0]
         password = test[1]
 
@@ -71,7 +71,7 @@ def test_valid(valid_tests):
         
         # print query response
         print(f"SQL query: {query(username, password)}")
-    
+
 
 # Generate test cases (again, each team member should generate one test case) 
 # that demonstrate a tautology attack. This function will return member valid 
@@ -86,7 +86,7 @@ def tautology_tests():
     # left string in each list is the username, right is password
     tautology_test_cases = [
         ["User_Listed2", "nope' OR 'z' = 'z'"],
-        ["", ""],
+        ["Number1User!", "Nada' OR 'a' = 'a'"],
         ["", ""],
         ["", ""],
         ["", ""],
@@ -108,10 +108,20 @@ def test_tautology(tautology_tests, title):
     Return:     nothing 
     """
     # display type tests being run
-    """print(f"\n\033[1;31m{title}\033[00m")"""
+    print(f"\n\033[1;31m{title}\033[00m")
 
-    # loop through tautology test cases, run query, print output
-    pass
+    # loop through valid test cases, print output
+    for test in valid_tests:
+
+        # break test list down for clarity
+        username = test[0]
+        password = test[1]
+
+        # print arguments passed to query
+        print(f"Query arguments - Username: {username}, Password: {password}")
+        
+        # print query response
+        print(f"SQL query: {query(username, password)}")
 
 
 # Generate test cases (again, each team member should generate one test case) 
@@ -127,7 +137,7 @@ def union_tests():
     # left string in each list is the username, right is password
     union_test_cases = [
         ["User_3_Listed", "nope' UNION SELECT authenticate FROM passwordlist"],
-        ["", ""],
+        ["ImAnother_user", "nothin' UNION SELECT authenticate FROM passwordlist"],
         ["", ""],
         ["", ""],
         ["", ""],
@@ -169,7 +179,7 @@ def additional_statement_tests():
     # left string in each list is the username, right is password
     additional_statement_test_cases = [
         ["One_4_User", "none' ; ALTER TABLE passwordlist DROP COLUMN name"],
-        ["", ""],
+        ["additional_user", "nope' ; ALTER TABLE passwordlist DROP COLUMN passwordlist"],
         ["", ""],
         ["", ""],
         ["", ""],
@@ -211,7 +221,7 @@ def comment_tests():
     # left string in each list is the username, right is password
     comment_test_cases = [
         ["Admin'; -- and passwd='DoesNotMatter';", "On3_53cr3t_P455w0rd"],
-        ["", ""],
+        ["Admin'; -- and passwd='NotRequired';", "V3rySecr3tStuff!"],
         ["", ""],
         ["", ""],
         ["", ""],
