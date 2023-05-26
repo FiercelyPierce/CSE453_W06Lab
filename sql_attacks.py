@@ -36,7 +36,7 @@ def valid_tests():
     valid_test_cases = [
         ["First_User_2day", "On3_S3cr3t_P4sswd"],
         ["2nd_User_2morow", "Th!sIs@S3creT"],
-        ["Third_User,2uesday", "My_sup3r_SeCr3t_P455W0rd"],
+        ["Third_User_2uesday", "My_sup3r_SeCr3t_P455W0rd"],
         ["", ""],
         ["", ""],
         ["", ""]
@@ -111,7 +111,7 @@ def test_tautology(tautology_tests, title):
     print(f"\n\033[1;31m{title}\033[00m")
 
     # loop through valid test cases, print output
-    for test in valid_tests:
+    for test in tautology_tests:
 
         # break test list down for clarity
         username = test[0]
@@ -138,7 +138,7 @@ def union_tests():
     union_test_cases = [
         ["User_3_Listed", "nope' UNION SELECT authenticate FROM passwordlist"],
         ["ImAnother_user", "nothin' UNION SELECT authenticate FROM passwordlist"],
-        ["Whitelisted_user" "negative' UNION SELECT authenticate FROM passwordlist "],
+        ["Whitelisted_user", "negative' UNION SELECT authenticate FROM passwordlist "],
         ["", ""],
         ["", ""],
         ["", ""]
@@ -347,7 +347,7 @@ def strong_mitigation(test_cases):
         sanitized_tests.append(sanitized_list)
 
     # return the strong sanitized test cases     
-    return 
+    return sanitized_tests
 
 
 # function to keep from duplicating code in strong_mitigation function    
