@@ -110,7 +110,7 @@ def test_tautology(tautology_tests, title):
     # display type tests being run
     print(f"\n\033[1;31m{title}\033[00m")
 
-    # loop through valid test cases, print output
+    # loop through tautology test cases, print output
     for test in tautology_tests:
 
         # break test list down for clarity
