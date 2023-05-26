@@ -37,7 +37,7 @@ def valid_tests():
         ["First_User_2day", "On3_S3cr3t_P4sswd"],
         ["2nd_User_2morow", "Th!sIs@S3creT"],
         ["Third_User_2uesday", "My_sup3r_SeCr3t_P455W0rd"],
-        ["", ""],
+        ["Forth_User_26th", "Password"],
         ["", ""],
         ["", ""]
     ]
@@ -88,7 +88,7 @@ def tautology_tests():
         ["User_Listed2", "nope' OR 'z' = 'z'"],
         ["Number1User!", "Nada' OR 'a' = 'a'"],
         ["Usuh_numba3", "Zilch OR 'b' = 'b'"],
-        ["", ""],
+        ["LuckyFour", "wrong OR 1 == 1"],
         ["", ""],
         ["", ""]
     ]
@@ -139,7 +139,7 @@ def union_tests():
         ["User_3_Listed", "nope' UNION SELECT authenticate FROM passwordlist"],
         ["ImAnother_user", "nothin' UNION SELECT authenticate FROM passwordlist"],
         ["Whitelisted_user", "negative' UNION SELECT authenticate FROM passwordlist "],
-        ["", ""],
+        ["Craig", "guess UNION SELECT authenticate FROM passwordlist"],
         ["", ""],
         ["", ""]
     ] 
@@ -162,7 +162,15 @@ def test_union(union_tests, title):
     print(f"\n\033[1;31m{title}\033[00m")
 
     # loop through union test cases, run_query, print output
-    pass
+    for test in union_tests:
+
+        username = test[0]
+        password= test[1]
+
+        print(f"Query arguments - Username: {username}, Password: {password}")
+        
+        # print query response
+        print(f"SQL query: {query(username, password)}")
 
 
 # Generate test cases (again, each team member should generate one test case) 
@@ -181,7 +189,7 @@ def additional_statement_tests():
         ["One_4_User", "none' ; ALTER TABLE passwordlist DROP COLUMN name"],
         ["additional_user", "nope' ; ALTER TABLE passwordlist DROP COLUMN passwordlist"],
         ["This_user_awesome", "zero' ; ALTER TABLE passwordlist DROP COLUMN keyword"],
-        ["", ""],
+        ["DemonKing", "Ganondorf ; INSERT INTO passwordlist (name, passwd) VALUES 'Moblin', 'Bokoblin'"],
         ["", ""],
         ["", ""]
     ] 
@@ -205,7 +213,15 @@ def test_additional_statement(additional_statement_tests, title):
     print(f"\n\033[1;31m{title}\033[00m")
     
     # loop through additional statement test cases, run query, print output
-    pass
+    for test in additional_statement_tests:
+
+        username = test[0]
+        password= test[1]
+
+        print(f"Query arguments - Username: {username}, Password: {password}")
+        
+        # print query response
+        print(f"SQL query: {query(username, password)}")
 
 
 # Generate test cases (again, each team member should generate one test case) 
@@ -223,7 +239,7 @@ def comment_tests():
         ["Admin'; -- and passwd='DoesNotMatter';", "On3_53cr3t_P455w0rd"],
         ["Admin'; -- and passwd='NotRequired';", "V3rySecr3tStuff!"],
         ["Admin'; -- and passwd='Undisclosed';", "My_sup3r_SeCr3t_K3yW0rD"],
-        ["", ""],
+        ["Admin; -- ", "GetHacked"],
         ["", ""],
         ["", ""]
     ] 
@@ -246,7 +262,15 @@ def test_comment(comment_tests, title):
     print(f"\n\033[1;31m{title}\033[00m")
     
     # loop through comment test cases, print output
-    pass
+    for test in comment_tests:
+
+        username = test[0]
+        password= test[1]
+
+        print(f"Query arguments - Username: {username}, Password: {password}")
+        
+        # print query response
+        print(f"SQL query: {query(username, password)}")
 
 
 # Create a function to provide a weak mitigation against all four attacks. 
