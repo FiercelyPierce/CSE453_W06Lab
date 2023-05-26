@@ -159,7 +159,7 @@ def test_union(union_tests, title):
     Return:     nothing 
     """
     # display type tests being run
-    """print(f"\n\033[1;31m{title}\033[00m")"""
+    print(f"\n\033[1;31m{title}\033[00m")
 
     # loop through union test cases, run_query, print output
     pass
@@ -202,7 +202,7 @@ def test_additional_statement(additional_statement_tests, title):
     Return:     nothing 
     """
     # display type tests being run
-    """print(f"\n\033[1;31m{title}\033[00m")"""
+    print(f"\n\033[1;31m{title}\033[00m")
     
     # loop through additional statement test cases, run query, print output
     pass
@@ -243,7 +243,7 @@ def test_comment(comment_tests, title):
     Return:     nothing 
     """
     # display type tests being run
-    """print(f"\n\033[1;31m{title}\033[00m")"""
+    print(f"\n\033[1;31m{title}\033[00m")
     
     # loop through comment test cases, print output
     pass
@@ -392,65 +392,160 @@ def strongly_sanitized(test_string):
     return sanitized_string
 
 
-# main function
-def main():
+# run the valid test cases
+def execute_valid_tests():
     """
-    This is the main function which drives the program. All functions as
-    defined by the assignment are first called directly with the associated
-    test cases, next called using the weak mitigation function, and finally
-    called using the strong mitigation function. It accepts no parameters and
-    returns nothing.
-    Parameters: none
-    Return:     nothing
+    This function accepts no parameters and returns nothing. It will execute
+    the valid test cases.
     """
     # run valid test cases
     test_valid(valid_tests())
 
+
+# run tautology attack tests
+def execute_tautology_tests():
+    """
+    This function accepts no parameters and returns nothing. It will execute
+    the tautology test cases with and without both weak and strong mitigation.
+    """
     # run tautology test cases
     test_tautology(tautology_tests(), "Running tautology test cases")
-
-    # run union test cases
-    test_union(union_tests(), "Running union test cases")
-
-    # run additional statement test cases
-    test_additional_statement(additional_statement_tests(), \
-                              "Running additional statement test cases")
-
-    # run comment test cases
-    test_comment(comment_tests(), "Running comment test cases")
 
     # run tautology tests using weak mediation
     test_tautology(weak_mitigation(tautology_tests()), \
                    "Running tautology test cases with weak mitigation")
+    
+    # run tautology tests using strong mediation
+    test_tautology(strong_mitigation(tautology_tests()), \
+                   "Running tautology test cases with strong mitigation")
+    
+
+# run untion attack tests
+def execute_union_tests():
+    """
+    This function accepts no parameters and returns nothing. It will execute
+    the union test cases with and without both weak and strong mitigation.
+    """
+    # run union test cases
+    test_union(union_tests(), "Running union test cases")
 
     # run union tests using weak mediation
     test_union(weak_mitigation(union_tests()), \
                    "Running union test cases with weak mitigation")
-
-    # run additional statement tests using weak mediation
-    test_additional_statement(weak_mitigation(additional_statement_tests()), \
-                   "Running additional statement test cases with weak mitigation")
-
-    # run comment tests using weak mediation
-    test_comment(weak_mitigation(comment_tests()), \
-                   "Running comment test cases with weak mitigation")  
-
-    # run tautology tests using strong mediation
-    test_tautology(strong_mitigation(tautology_tests()), \
-                   "Running tautology test cases with strong mitigation")
-
+    
     # run union tests using strong mediation
     test_union(strong_mitigation(union_tests()), \
                    "Running union test cases with strong mitigation")
+    
 
+# run additional statement attack tests
+def execute_additional_statement_tests():
+    """
+    This function accepts no parameters and returns nothing. It will execute
+    the additional statement test cases with and without both weak and 
+    strong mitigation.
+    """
+    # run additional statement test cases
+    test_additional_statement(additional_statement_tests(), \
+                              "Running additional statement test cases")
+    
+    # run additional statement tests using weak mediation
+    test_additional_statement(weak_mitigation(additional_statement_tests()), \
+                   "Running additional statement test cases with weak mitigation")
+    
     # run additional statement tests using strong mediation
     test_additional_statement(strong_mitigation(additional_statement_tests()), \
                    "Running additional statement test cases with strong mitigation")
+    
 
+# run comment attack tests
+def execute_comment_tests():
+    """
+    This function accepts no parameters and returns nothing. It will execute
+    the comment test cases with and without both weak and strong mitigation.
+    """
+    # run comment test cases
+    test_comment(comment_tests(), "Running comment test cases")
+
+    # run comment tests using weak mediation
+    test_comment(weak_mitigation(comment_tests()), \
+                   "Running comment test cases with weak mitigation") 
+    
     # run comment tests using strong mediation
     test_comment(strong_mitigation(comment_tests()), \
                    "Running comment test cases with strong mitigation")
- 
+    
+
+# main function
+def main():
+    """
+    This is the main function which drives the program. It accepts no parameters 
+    and returns nothing. A menu allows selection of which tests to run or the
+    option to quit.
+    Parameters: none
+    Return:     nothing
+    """
+    # loop through menu options until user quits
+    while True:
+
+        # display menu choices
+        print("\nSQL Injection Test Menu Options:")
+        print("  1. Execute valid test cases")
+        print("  2. Execute tautology attack test cases")
+        print("  3. Execute union attack test cases")
+        print("  4. Execute additional statement test cases")
+        print("  5. Execute comment attack test cases")
+        print("  6. Execute all test cases")
+        print("  7. Quit program\n")
+
+        # get user selection
+        selection = input("Choose an above option (1 - 7): ")
+
+        # verify acceptable input
+        try:
+            option = int(selection)
+
+        # if option is not an integer, option equals zero
+        except:
+            option = 0
+        
+        # print clean line and verify valid option selection
+        print()
+        if option < 1 or option > 7:
+            print("Invalid option, choose an option number 1 through 7.")
+
+        # option 1, execute valid tests
+        elif option == 1:
+            execute_valid_tests()
+
+        # option 2, execute tautology tests
+        elif option == 2:
+            execute_tautology_tests()
+
+        # option 3, execute union tests
+        elif option == 3:
+            execute_union_tests()
+
+        # option 4, execute additional statement tests
+        elif option == 4:
+            execute_additional_statement_tests()
+
+        # option 5, execute comment tests
+        elif option == 5:
+            execute_comment_tests()
+
+        # option 6, execute all tests
+        elif option == 6:
+            execute_valid_tests()
+            execute_tautology_tests()
+            execute_union_tests()
+            execute_additional_statement_tests()
+            execute_comment_tests()
+
+        # option 7, quit program
+        elif option == 7:
+            break
+
 
 # if run directly, run main function
 if __name__ == "__main__":
