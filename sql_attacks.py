@@ -6,7 +6,7 @@ Purpose: To demonstrate the ability to harden code against SQL attacks.
 
 # Write a function to accept two strings (username and a password) and return 
 # a single string (SQL)
-def query(username, password):
+def query(username, password): 
     """
     This function accepts two parameters, a username and a password. It takes these,
     forms an SQL query with it, and returns it as a string.
