@@ -17,7 +17,7 @@ def query(username, password):
     return f"""
         SELECT authenticate 
         FROM passwordlist 
-        WHERE name='{username}' 
+        WHERE name='{username}'  
         and passwd='{password}';
     """
 
