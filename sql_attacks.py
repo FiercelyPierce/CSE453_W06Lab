@@ -236,7 +236,7 @@ def comment_tests():
     """
     # left string in each list is the username, right is password
     comment_test_cases = [
-        ["Admin'; -- and passwd='DoesNotMatter';", "On3_53cr3t_P455w0rd"],
+        ["Admin\"; -- and passwd='DoesNotMatter';", "On3_53cr3t_P455w0rd"],
         ["Admin'; -- and passwd='NotRequired';", "V3rySecr3tStuff!"],
         ["Supervisor_1'; -- and passwd='Undisclosed';", "My_sup3r_SeCr3t_K3yW0rD"],
         ["Root'; -- ", "GetHacked"],
