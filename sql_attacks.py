@@ -39,7 +39,7 @@ def valid_tests():
         ["Third_User_2uesday", "My_sup3r_SeCr3t_P455W0rd"],
         ["Forth_User_26th", "Password"],
         ["5th_User", "This_is_a_password"],
-        ["Sixth_User", "MY_P4ssw0rd_iS_On3"],
+        ["Sixth_User", "MY_P4ssw0rd_iS_On3"]
     ]
     return valid_test_cases
 
@@ -87,10 +87,10 @@ def tautology_tests():
     tautology_test_cases = [
         ["User_Listed2", "nope' OR 'z' = 'z'"],
         ["Number1User!", "Nada' OR 'a' = 'a'"],
-        ["Usuh_numba3", "Zilch OR 'b' = 'b'"],
-        ["LuckyFour", "wrong OR '1' == '1'"],
-        ["The_fifth", "invalid OR '10' == '10'"],
-        ["Im_sixth", "erroneous OR '6' == '6'"],
+        ["Usuh_numba3", "Zilch' OR 'b' = 'b'"],
+        ["LuckyFour", "wrong' OR '1' == '1'"],
+        ["The_fifth", "invalid' OR '10' == '10'"],
+        ["Im_sixth", "erroneous' OR '6' == '6'"]
     ]
     return tautology_test_cases
 
@@ -139,9 +139,9 @@ def union_tests():
         ["User_3_Listed", "nope' UNION SELECT authenticate FROM passwordlist"],
         ["ImAnother_user", "nothin' UNION SELECT authenticate FROM passwordlist"],
         ["Whitelisted_user", "negative' UNION SELECT authenticate FROM passwordlist "],
-        ["Craig", "guess UNION SELECT authenticate FROM passwordlist"],
-        ["Jimbo", "help UNION SELECT authenticate FROM passwordlist"],
-        ["Slick_user", "pop' UNION SELECT authenticate FROM passwordlist"],
+        ["Craig", "guess' UNION SELECT authenticate FROM passwordlist"],
+        ["Jimbo", "help' UNION SELECT authenticate FROM passwordlist"],
+        ["Slick_user", "pop' UNION SELECT authenticate FROM passwordlist"]
     ] 
     return union_test_cases
 
@@ -187,11 +187,11 @@ def additional_statement_tests():
     # left string in each list is the username, right is password
     additional_statement_test_cases = [
         ["One_4_User", "none' ; ALTER TABLE passwordlist DROP COLUMN name"],
-        ["additional_user", "nope' ; ALTER TABLE passwordlist DROP COLUMN passwordlist"],
+        ["additional_user", "nope' ; ALTER TABLE passwordlist DROP COLUMN passwd"],
         ["This_user_awesome", "zero' ; ALTER TABLE passwordlist DROP COLUMN keyword"],
-        ["DemonKing", "Ganondorf ; INSERT INTO passwordlist (name, passwd) VALUES 'Moblin', 'Bokoblin'"],
-        ["Sledge", "Operator ; ALTER TABLE passwordlist ADD COLUMN hammer"],
-        ["Octane", "Car ; ALTER TABLE passwordlist ADD COLUMN red"],
+        ["DemonKing", "Ganondorf' ; INSERT INTO passwordlist (name, passwd) VALUES 'Moblin', 'Bokoblin'"],
+        ["Sledge", "Operator' ; ALTER TABLE passwordlist ADD COLUMN hammer"],
+        ["Octane", "Car' ; ALTER TABLE passwordlist ADD COLUMN red"]
     ] 
     return additional_statement_test_cases
 
@@ -238,10 +238,10 @@ def comment_tests():
     comment_test_cases = [
         ["Admin'; -- and passwd='DoesNotMatter';", "On3_53cr3t_P455w0rd"],
         ["Admin'; -- and passwd='NotRequired';", "V3rySecr3tStuff!"],
-        ["Admin'; -- and passwd='Undisclosed';", "My_sup3r_SeCr3t_K3yW0rD"],
-        ["Admin; -- ", "GetHacked"],
-        ["Admin; -- and passwd='Itdoesmatter';", "TiM_T4m_1o0"],
-        ["Admin; -- and passwd='Comment';", "I_h4ve_4_Pa55W0rd"],
+        ["Supervisor_1'; -- and passwd='Undisclosed';", "My_sup3r_SeCr3t_K3yW0rD"],
+        ["Root'; -- ", "GetHacked"],
+        ["Employee'; -- and passwd='Itdoesmatter';", "TiM_T4m_1o0"],
+        ["BossPerson'; -- and passwd='Comment';", "I_h4ve_4_Pa55W0rd"]
     ] 
     return comment_test_cases 
 
