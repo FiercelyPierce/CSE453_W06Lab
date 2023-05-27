@@ -328,7 +328,8 @@ def weakly_sanitized(corrupt_data):
     for character in corrupt_data:
 
         # if forbidden char is found, delete it from the username list
-        if character == '\'' or character == ";" or character == "--" or character == "\"":
+        if character == '\'' or character == ";" or character == "\"" or character == "--" \
+           or character == "\"":
             index = corrected_list.index(character)
             corrected_list.pop(index)
 
@@ -392,7 +393,7 @@ def strongly_sanitized(test_string):
     corrected_list = []
     
     # create list of forbidden characters to check against
-    forbidden_characters = ["\'", "\'", ";", "--"]
+    forbidden_characters = ["\'", "\"", ";", "--"]
 
     # if test list is more than one element, corrected list becomes test_list[0]
     if len(test_list) > 1:
